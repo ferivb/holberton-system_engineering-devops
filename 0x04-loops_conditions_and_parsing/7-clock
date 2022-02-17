@@ -2,7 +2,7 @@
 # This script cycles through hrs and mins
 
 hr=0
-while ((hr<12));do
+while ((hr<13));do
     echo "Hour: $hr"
     min=1
     while ((min<60));do
