@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Lists contents of current dir
+
+LIST=$(ls)
+for ((i=0;i<"${#LIST[@]}";i++)); do
+    echo "${LIST[$i]}" | cut -d'-' -f2
+done
