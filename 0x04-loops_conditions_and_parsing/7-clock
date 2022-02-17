@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script cycles through hrs and mins
+
+hr=0
+min=1
+while ((hr<12));do
+    echo "Hour: $hr"
+    while ((min<60));do
+        echo $min
+        ((min++))
+    done
+    min=1
+    ((hr++))
+done
+echo "Hour: 12"
