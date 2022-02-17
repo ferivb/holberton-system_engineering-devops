@@ -11,4 +11,3 @@ while ((hr<12));do
     done
     ((hr++))
 done
-echo "Hour: 12"
