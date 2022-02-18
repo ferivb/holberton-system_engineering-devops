@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Bash script to easily get the PID of Bash processes
+
+pgrep -l bash
