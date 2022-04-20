@@ -1,4 +1,5 @@
 # Client SSH configuration file
+include stdlib
 
 file_line { 'PasswordAuthentication':
     ensure => 'present',
