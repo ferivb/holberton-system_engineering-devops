@@ -18,8 +18,8 @@ echo "server {
     root /var/www/html/felipe;
     }" > /etc/nginx/conf.d/example.com.conf
 
-#creates the index file
-echo "Hello World" > /var/www/html/index.nginx-debian.html
-
 #starts the server
 service nginx start
+
+#creates the index file
+echo "Hello World" > /var/www/html/index.nginx-debian.html
