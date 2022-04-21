@@ -8,8 +8,22 @@ sudo apt-get upgrade -y
 # Installs nginx
 sudo apt-get install nginx -y
 
+#creates the directory
+sudo mkdir -p /var/www/html/felipe
+
+#unlinks the default file
+unlink /etc/nginx/sites-enabled/default
+
+#creates the config file
+echo "server {
+    listen 80 default_server;
+    index index.html;
+    root /var/www/html/felipe;
+    }" > /etc/nginx/conf.d/ferivb.tech.conf
+
+
 #starts the server
 sudo service nginx start
 
 #creates the index file
-echo "Hello World" > /var/www/html/index.nginx-debian.html
+echo "Hello World" > /var/www/html/felipe/index.html;
