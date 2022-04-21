@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Installs nginx, sets it up to listen on port 80 and creates a landing page
+
+#updates apt repo
+apt-get update -y
+apt-get upgrade -y
+
+# Installs nginx
+apt-get install nginx -y
+
+#unlinks the default file
+unlink /etc/nginx/sites-enabled/default
+
+#creates the config file
+echo "server {
+    listen 80 default_server;
+    index index.html;
+    root /;
+    }" > /etc/nginx/conf.d/example.com.conf
+
+#creates the index file
+echo "Hello World" > /index.html
