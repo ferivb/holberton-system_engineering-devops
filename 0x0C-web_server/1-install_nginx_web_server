@@ -15,8 +15,11 @@ unlink /etc/nginx/sites-enabled/default
 echo "server {
     listen 80 default_server;
     index index.html;
-    root /;
+    root /var/www/html/felipe;
     }" > /etc/nginx/conf.d/example.com.conf
 
 #creates the index file
-echo "Hello World" > /index.html
+echo "Hello World" > /var/www/html/index.nginx-debian.html
+
+#starts the server
+service nginx start
