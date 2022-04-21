@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Installs nginx, sets it up to listen on port 80 and creates a landing page
+
+#updates apt repo
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+# Installs nginx
+sudo apt-get install nginx -y
+
+#creates the index directory
+sudo mkdir -p /var/www/ferivb.tech/html
+
+#unlinks the default file
+unlink /etc/nginx/sites-enabled/default
+
+#creates the config file
+echo "server {
+	listen 80 default_server;
+	index index.html;
+	server_name ferivb.tech;
+	root /var/www/ferivb.tech/html;
+
+	location /redirect_me {
+      return 301 https://www.youtube.com/watch?v=LFfVDyW6ddg\$request_uri;
+      }
+
+	error_page 404 /custom_404.html;
+        location = /custom_404.html {
+                root /var/www/ferivb.tech/html;
+                internal;
+        }
+	}
+" > /etc/nginx/conf.d/ferivb.tech.conf
+
+#creates the index file
+echo "Hello World" > /var/www/ferivb.tech/html/index.html;
+
+#creates the index file
+echo "Ceci n'est pas une page" > /var/www/ferivb.tech/html/custom_404.html;
+
+#restarts the server
+sudo service nginx restart
