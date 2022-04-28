@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# copies the config file with the port 80 in nginx
+
+cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
