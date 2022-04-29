@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# uninstalls HAproxy
+
+sudo apt-get remove haproxy -y
+sudo apt-get remove --auto-remove haproxy -y
+sudo apt-get purge --auto-remove haproxy -y

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Installs HAproxy
+
+#updates apt repo
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+#installs HAproxy
+sudo apt-get install haproxy -y
+
+#creates the backup folder for the config file
+mkdir -p /etc/haproxy/backup/
+
+#backups the default config file
+cp /etc/haproxy/haproxy.cfg /etc/haproxy/backup/haproxy.cfg
+
+#Enables HAproxy to be managed via an init scrip
+echo "ENABLED=1" >> /etc/default/haproxy
+
+#Creates custom config file
+echo "frontend ferivb_tech
+    bind *:80
+    mode http
+    timeout client 1s
+    default_backend allservers
+    
+backend allservers
+    balance roundrobin
+    timeout connect 5s
+    timeout server 3s
+    mode http
+    server 3818-web-01 18.212.237.67:80 check
+    server 3818-web-02 54.146.210.108:80 check" > /etc/haproxy/haproxy.cfg
+
+#Start HAproxy using the custom config
+sudo service haproxy restart
