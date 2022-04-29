@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 #Starts nginx as the nginx user
 
-#stop apache usage of port 8080
-sudo pkill apache2
-
 #Give read permissions to nginx user
-sudo chmod 004 /etc/nginx/nginx.conf
-
-#change user on nginx.conf
-sudo sed -i "s/#user www-data/user nginx/" /etc/nginx/sites-enable/default
+sudo chmod 006 /etc/nginx/nginx.conf
 
 #change listening port
 sudo sed -i "s/80/8080/" /etc/nginx/sites-available/default
+
+#change user on nginx.conf
+#sudo sed -i "s/#user www-data/user nginx/" /etc/nginx/sites-enable/default
+
+#stop apache usage of port 8080
+sudo pkill apache2
 
 #Start nginx.service as nginx user
 sudo -u nginx service nginx start
