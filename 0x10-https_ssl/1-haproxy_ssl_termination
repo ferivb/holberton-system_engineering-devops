@@ -1,0 +1,23 @@
+frontend ferivb_tech
+    bind *:80
+    bind *:443 ssl crt /etc/ssl/ferivb.tech/www.ferivb.tech.pem
+    timeout client 1s
+    
+    #ACL for letsencrypt requests
+    acl le-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if le-acl
+
+    default_backend allservers
+
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:8888
+    timeout connect 5s
+    timeout server 3s
+
+backend allservers
+    balance roundrobin
+    timeout connect 5s
+    timeout server 3s
+    mode http
+    server 3818-web-01 18.212.237.67:80 check
+    server 3818-web-02 54.146.210.108:80 check
