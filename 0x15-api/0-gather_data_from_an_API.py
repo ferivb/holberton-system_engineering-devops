@@ -13,7 +13,7 @@ if __name__ == "__main__":
     todos = requests.get('{}todos/'.format(url), params=payload).json()
 
     total = len(todos)
-    completed = 0
+    done = 0
     tasks = []
 
     for i in todos:
