@@ -1,21 +1,24 @@
 #!/usr/bin/python3
 """ Extend your Python script to export data in the CSV format. """
 import csv
-import requests
+from requests import get
 from sys import argv
 
-# fuck you fuck this
-if __name__ == "__main__":
-    employee = argv[1]
-    payload = {"userId": employee}
-    url = "https://jsonplaceholder.typicode.com/"
-    users = requests.get('{}users/{}'.format(url, argv[1])).json()
-    todos = requests.get('{}todos/'.format(url), params=payload).json()
+if __name__ == '__main__':
+    USER_ID = int(argv[1])
+    users = get('https://jsonplaceholder.typicode.com/users/{}'.
+                format(USER_ID)).json()
+    todos = get('https://jsonplaceholder.typicode.com/todos?userId={}'.
+                format(USER_ID)).json()
 
-# WTF is wrong with this
-with open("{}.csv".format(employee), 'w') as f:
-    csv_writer = csv.writer(f, quoting=csv.QUOTE_ALL)
-    for i in todos:
-        status = i.get('completed')
-        task = i.get('title')
-        csv_writer.writerow([employee, users.get("username"), status, task])
+    USERNAME = users.get('username')
+    # Open the file in the write mode
+    with open('{}.csv'.format(USER_ID), 'w') as f:
+        # Create the csv writer
+        csv_writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        for progress in todos:
+            TASK_COMPLETED_STATUS = progress.get('completed')
+            TASK_TITLE = progress.get('title')
+            # Write a row to the csv file
+            csv_writer.writerow(
+                [USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE])
