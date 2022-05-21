@@ -5,6 +5,7 @@ import csv
 import requests
 from sys import argv
 
+# fuck you fuck this
 if __name__ == "__main__":
     employee = argv[1]
     payload = {"userId": employee}
@@ -12,6 +13,7 @@ if __name__ == "__main__":
     users = requests.get('{}users/{}'.format(url, argv[1])).json()
     todos = requests.get('{}todos/'.format(url), params=payload).json()
 
+# WTF is wrong with this
 with open("{}.csv".format(employee), 'w') as f:
     csv_writer = csv.writer(f, quoting=csv.QUOTE_ALL)
     for i in todos:
