@@ -21,7 +21,7 @@ if __name__ == "__main__":
             done += 1
             tasks.append(i.get('title'))
 
-    print("Employee {} is done with tasks({}/{}).".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         users.get('name'), done, total))
 
     for task in tasks:
