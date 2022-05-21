@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Extend your Python script to export data in the CSV format. """
 import csv
-from requests import get
+import requests
 from sys import argv
 
 # fuck you fuck this
