@@ -25,4 +25,4 @@ if __name__ == "__main__":
         users.get('name'), done, total))
 
     for task in tasks:
-        print("\t{}".format(task))
+        print("\t {}".format(task))
