@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Python script to export data in the CSV format."""
+"""Python script to export data in the CSV format.
+    What the fuck is wrong with this shit"""
 import csv
 import requests
 from sys import argv
