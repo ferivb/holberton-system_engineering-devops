@@ -5,6 +5,7 @@ import requests
 
 def recurse(subreddit, hot_list=[], after="", count=0):
     """Returns a list of titles of all hot posts on a given subreddit."""
+
     # Payload for the GET request
     url = f'https://www.reddit.com/r/{subreddit}/hot/.json'
     headers = {'user-Agent': 'Noobdevsayswhat'}
