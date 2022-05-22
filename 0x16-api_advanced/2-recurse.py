@@ -16,7 +16,7 @@ def recurse(subreddit, hot_list=[], after="", count=0):
 
     # Request placeholder
     res = requests.get(url, headers=headers, params=params)
-    
+
     # Restrain for unexistant subs
     if res.status_code > 299 and res.status_code < 500:
         return None
@@ -30,4 +30,3 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     if after is not None:
         return recurse(subreddit, hot_list, after, count)
     return hot_list
-    
