@@ -1,0 +1,22 @@
+server {
+	listen 80 default_server;
+	index index.html;
+	server_name ferivb.tech;
+	root /var/www/ferivb.tech/html;
+        add_header X-Served-By 3818-web-01;
+	location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=LFfVDyW6ddg$request_uri;
+        }
+	error_page 404 /custom_404.html;
+        location = /custom_404.html {
+                root /var/www/ferivb.tech/html;
+                internal;
+        }
+        location /hbnb_static/ {
+                alias /data/web_static/current/;
+        }
+	location /airbnb-onepage/ {
+		proxy_pass http://0.0.0.0:5000;
+        }
+	}
+
